@@ -4,9 +4,8 @@
     <div class="callback__wrapper" v-if="profile != null">
       <img
         class="callback__circle"
-        v-if="!profile?.images.length != 0"
+        v-if="profile?.images.length != 0"
         :src="profile?.images[0].url"
-        alt=""
       />
       <div class="callback__circle __placeholder" v-else>
           <span class="callback__circle-letter">{{firstChar}}</span>
