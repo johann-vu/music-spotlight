@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { StartLogin } from "../scripts/login";
+import { StartLogin } from "../scripts/spotify";
 export default {
   name: "Welcome",
   methods: {
@@ -32,6 +32,7 @@ export default {
   font-weight: bold;
   border: solid black;
   padding: 6px;
+  transition: background-color 0.4s, color 0.4s;
 }
 .welcome__auth-link:hover {
   cursor: pointer;
