@@ -1,5 +1,5 @@
 <template>
-  <div class="top-item__wrapper">
+  <div class="top-item__wrapper" @click="openURL">
     <img class="top-item__image" :src="item.imageURL" />
     <div class="top-item__infos">
       <p class="top-item__title">{{ item.title }}</p>
@@ -13,6 +13,11 @@ export default {
   props: {
     item: Object,
   },
+  methods: {
+      openURL() {
+          window.location = this.item.url;
+      }
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -23,6 +28,12 @@ export default {
   align-items: center;
   margin: 50px 0;
   height: 10vh;
+
+  &:hover {
+      cursor: pointer;
+      box-sizing: border-box;
+      border: solid grey;
+  }
 
   .top-item__image {
       background-color: black;

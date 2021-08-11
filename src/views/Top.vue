@@ -1,5 +1,5 @@
 <template>
-    <h1>Top</h1>
+    <h1>Top Artists and Tracks</h1>
     <select v-model="visible">
         <option value="tracks">Tracks</option>
         <option value="artists">Artists</option>

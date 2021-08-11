@@ -4,7 +4,7 @@ export function ConvertArtists(artists) {
     var newItem = {
       id: artist.id,
       title: artist.name,
-      uri: artist.uri,
+      url: artist.external_urls.spotify,
       subtitle: artist.genres.join(", "),
       imageURL: getImageURL(artist)
     };
@@ -25,7 +25,7 @@ export function ConvertTracks(tracks) {
     var newItem = {
       id: track.id,
       title: track.name,
-      uri: track.uri,
+      url: track.external_urls.spotify,
       subtitle: artists.join(", "),
       imageURL: getImageURL(track.album)
     };
