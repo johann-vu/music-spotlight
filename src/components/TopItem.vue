@@ -26,8 +26,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .top-item__wrapper {
-    height: 10vh;
-    background-color: blue;
+  height: 10vh;
+  background-color: blue;
 }
 
 .top-item__content {
@@ -41,12 +41,14 @@ export default {
   position: relative;
   top: 0;
   left: 0;
-  transition: top ease 0.5s, left ease 0.5s;
+  transition: top ease 0.5s, left ease 0.5s, box-shadow ease 0.5s;
 
   &:hover {
     cursor: pointer;
     top: -10px;
     left: -10px;
+    -webkit-box-shadow: 10px 10px 15px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 10px 10px 15px 2px rgba(0, 0, 0, 0.2);
   }
 
   .top-item__image {
