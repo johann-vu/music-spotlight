@@ -1,12 +1,14 @@
 <template>
-    <ul>
-        <li v-for="item in listItems" :key="item.id">{{item.title}}</li>
-    </ul>
+    <TopItem v-for="item in listItems" :key="item.id" :item="item" />
 </template>
 
 <script>
+import TopItem from './TopItem.vue'
 export default {
     name:"TopList",
+    components: {
+        TopItem
+    },
     props: {
         listItems: {
             type:Array,
