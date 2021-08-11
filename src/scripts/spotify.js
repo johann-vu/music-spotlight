@@ -1,6 +1,6 @@
 const CLIENT_ID = "";
 const REDIRECT_URI = "http://localhost:8080/callback";
-const SCOPE = "user-read-private user-read-email";
+const SCOPE = "user-top-read";
 const STATE_KEY = "spotify_auth_state";
 const TOKEN_KEY = "spotify_auth_token";
 
@@ -47,7 +47,7 @@ export async function MakeSpotifyGETRequest(uri) {
   if (!response.ok) {
     return
   }
-
+  
   return await response.json()
 }
 

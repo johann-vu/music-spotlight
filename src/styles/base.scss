@@ -1,0 +1,15 @@
+.yms__button {
+    font-size: 16pt;
+    font-weight: bold;
+    border: solid black;
+    padding: 6px;
+    transition: background-color 0.4s, color 0.4s;
+    color: black;
+    text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+  }
+}

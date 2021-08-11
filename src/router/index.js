@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Callback from '../views/Callback.vue'
+import Top from '../views/Top.vue'
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: '/callback',
     name: 'Callback',
     component: Callback
+  },
+  {
+    path: '/top',
+    name: 'Top',
+    component: Top
   },
 ]
 

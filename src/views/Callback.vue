@@ -1,21 +1,18 @@
 <template>
-  <h1>Authorization</h1>
   <div class="callback__wrapper">
-    <div class="callback__wrapper" v-if="profile != null">
-      <img
-        class="callback__circle"
-        v-if="profile?.images.length != 0"
-        :src="profile?.images[0].url"
-      />
-      <div class="callback__circle __placeholder" v-else>
-          <span class="callback__circle-letter">{{firstChar}}</span>
-      </div>
-      <p>Welcome {{ profile.display_name }}!</p>
-    </div>
+    <Profile
+      v-if="success && profile != null"
+      :username="this.profile.display_name"
+      :imageURL="this.profile?.images[0].url"
+    />
+    <router-link v-if="success" to="/top" class="yms__button">Continue</router-link>
+    <div v-if="!success">An error occured.</div>
+    <router-link v-if="!success" to="/" class="yms__button">Back</router-link>
   </div>
 </template>
 <script>
 import { EvaluateCallback, MakeSpotifyGETRequest } from "../scripts/spotify";
+import Profile from "../components/Profile.vue";
 export default {
   name: "Callback",
   data() {
@@ -24,28 +21,24 @@ export default {
       profile: null,
     };
   },
-  computed: {
-      firstChar() {
-          if (this.profile?.display_name) {
-              return this.profile.display_name.toUpperCase().charAt(0)
-          }
-          return ''
-      }
-  },
+  components: { Profile },
   methods: {
     getProfile() {
       MakeSpotifyGETRequest("https://api.spotify.com/v1/me")
         .then((profile) => {
           this.profile = profile;
-          console.log(profile);
         })
-        .catch((this.success = false));
+        .catch(() => (this.success = false));
+    },
+    evaluateCallback() {
+      var result = EvaluateCallback();
+      console.log(result);
+      this.success = result;
+      this.getProfile();
     },
   },
   mounted() {
-    var result = EvaluateCallback();
-    console.log("Callback success: " + result);
-    this.getProfile();
+    this.evaluateCallback();
   },
 };
 </script>
@@ -55,25 +48,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90vh;
+  height: 100vh;
   flex-direction: column;
-}
-
-.callback__circle {
-  height: 100px;
-  width: 100px;
-  border-radius: 100px;
-  border: solid black;
-}
-
-.__placeholder {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.callback__circle-letter {
-    font-size: 40pt;
-    font-weight: bold;
 }
 </style>

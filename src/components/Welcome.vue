@@ -2,7 +2,7 @@
   <div class="welcome__start">
     <span class="welcome__title">Your<br />Music<br />Spotlight</span>
     <div class="welcome__spacer"></div>
-    <a class="welcome__auth-link" @click="login">Let's go!</a>
+    <a class="welcome__auth-link yms__button" @click="login">Let's go!</a>
   </div>
 </template>
 
@@ -25,19 +25,6 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
-
-.welcome__auth-link {
-  font-size: 16pt;
-  font-weight: bold;
-  border: solid black;
-  padding: 6px;
-  transition: background-color 0.4s, color 0.4s;
-}
-.welcome__auth-link:hover {
-  cursor: pointer;
-  background-color: black;
-  color: white;
 }
 
 .welcome__spacer{
