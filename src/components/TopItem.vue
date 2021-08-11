@@ -1,9 +1,13 @@
 <template>
-  <div class="top-item__wrapper" @click="openURL">
-    <img class="top-item__image" :src="item.imageURL" />
-    <div class="top-item__infos">
-      <p class="top-item__title">{{ item.title }}</p>
-      <span class="top-item__sub-title">{{ item.subtitle ? item.subtitle : "-" }}</span>
+  <div class="top-item__wrapper">
+    <div class="top-item__content" @click="openURL">
+      <img class="top-item__image" :src="item.imageURL" />
+      <div class="top-item__infos">
+        <p class="top-item__title">{{ item.title }}</p>
+        <span class="top-item__sub-title">{{
+          item.subtitle ? item.subtitle : "-"
+        }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -14,44 +18,54 @@ export default {
     item: Object,
   },
   methods: {
-      openURL() {
-          window.location = this.item.url;
-      }
-  }
+    openURL() {
+      window.location = this.item.url;
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
 .top-item__wrapper {
+    height: 10vh;
+    background-color: blue;
+}
+
+.top-item__content {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   margin: 50px 0;
-  height: 10vh;
+  height: 100%;
+  background-color: white;
+  position: relative;
+  top: 0;
+  left: 0;
+  transition: top ease 0.5s, left ease 0.5s;
 
   &:hover {
-      cursor: pointer;
-      box-sizing: border-box;
-      border: solid grey;
+    cursor: pointer;
+    top: -10px;
+    left: -10px;
   }
 
   .top-item__image {
-      background-color: black;
-      flex: none;
-      height: 100%;
-      margin-right: 16px;
+    background-color: black;
+    flex: none;
+    height: 100%;
+    margin-right: 16px;
   }
 
   .top-item__infos {
-      .top-item__title {
-          font-weight: bold;
-          font-size: 24pt;
-          margin: 0;
-      }
+    .top-item__title {
+      font-weight: bold;
+      font-size: 24pt;
+      margin: 0;
+    }
 
-      .top-item__sub-title {
-          margin: 0;
-      }
+    .top-item__sub-title {
+      margin: 0;
+    }
   }
 }
 </style>
