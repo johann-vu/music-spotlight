@@ -1,5 +1,5 @@
 <template>
-  <div class="top-item__wrapper" :style="{'background-color': accentColour}">
+  <div class="top-item__wrapper" :style="{ 'background-color': accentColour }">
     <div class="top-item__content" @click="openURL">
       <img class="top-item__image" :src="item.imageURL" />
       <div class="top-item__infos">
@@ -9,6 +9,16 @@
         }}</span>
       </div>
     </div>
+    <div
+      class="top-item__cover top-item__cover-one"
+      :style="{ 'background-color': accentColour }"
+      :class="{ '--open': open }"
+    ></div>
+    <div
+      class="top-item__cover top-item__cover-two"
+      :style="{ 'background-color': oldAccentColour }"
+      :class="{ '--open': open }"
+    ></div>
   </div>
 </template>
 <script>
@@ -18,7 +28,8 @@ export default {
   data() {
     return {
       accentColour: "#FFFFFF",
-      oldAccentColour: "#FFFFFF"
+      oldAccentColour: "#FFFFFF",
+      open: false,
     };
   },
   props: {
@@ -37,17 +48,40 @@ export default {
             this.oldAccentColour = this.accentColour;
             this.accentColour = hex;
           }
-        })
+        });
     },
   },
   mounted() {
-    this.setAccentColor()
-  }
+    this.setAccentColor().finally(() => {
+      console.log("done");
+      this.open = true;
+    });
+  },
 };
 </script>
 <style lang="scss" scoped>
 .top-item__wrapper {
   height: 10vh;
+  position: relative;
+
+  .top-item__cover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width ease-in-out 0.5s;
+
+    &.top-item__cover-one {
+      transition-delay: 0.2s;
+    }
+
+    &.--open {
+      left: unset;
+      right: 0;
+      width: 0;
+    }
+  }
 }
 
 .top-item__content {
