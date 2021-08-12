@@ -1,15 +1,13 @@
 <template>
     <h1>Top Artists and Tracks</h1>
-    <select v-model="visible">
-        <option value="tracks">Tracks</option>
-        <option value="artists">Artists</option>
-    </select>
+    <CategoryToggle @category-changed="handleCategoryChange" />
     <TopList :listItems="visibleItems" />
 </template>
 <script>
 import { MakeSpotifyGETRequest } from '../scripts/spotify'
 import { ConvertArtists, ConvertTracks } from "../scripts/converter";
 import TopList from '../components/TopList.vue';
+import CategoryToggle from '../components/CategoryToggle.vue'
 export default {
     name:"Top",
     data() {
@@ -25,7 +23,7 @@ export default {
         }
     },
     components: {
-        TopList
+        TopList, CategoryToggle
     },
     methods: {
         getTopArtists() {
@@ -37,6 +35,9 @@ export default {
             MakeSpotifyGETRequest("https://api.spotify.com/v1/me/top/tracks")
             .then(res => this.topTracks = ConvertTracks(res.items))
             .catch(err => console.log(err))
+        },
+        handleCategoryChange(selection) {
+            this.visible = selection
         }
     },
     mounted() {
