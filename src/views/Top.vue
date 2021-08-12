@@ -1,6 +1,6 @@
 <template>
   <div class="top-view__wrapper">
-    <h1>Top Artists and Tracks</h1>
+    <h1>Your Music Spotlight</h1>
     <CategoryToggle @category-changed="handleCategoryChange" />
     <TopList :listItems="visibleItems" />
   </div>

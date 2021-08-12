@@ -65,7 +65,7 @@ $cover-animation-delay: 0.25s;
 
 .top-item__wrapper {
   height: 10vh;
-  min-height: 60px;
+  min-height: 80px;
   position: relative;
 
   .top-item__cover {
