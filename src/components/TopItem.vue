@@ -16,7 +16,6 @@
     ></div>
     <div
       class="top-item__cover top-item__cover-two"
-      :style="{ 'background-color': oldAccentColour }"
       :class="{ '--open': open }"
     ></div>
   </div>
@@ -28,7 +27,6 @@ export default {
   data() {
     return {
       accentColour: "#FFFFFF",
-      oldAccentColour: "#FFFFFF",
       open: false,
     };
   },
@@ -45,7 +43,6 @@ export default {
         .then((palette) => {
           const hex = palette.Vibrant.getHex();
           if (hex) {
-            this.oldAccentColour = this.accentColour;
             this.accentColour = hex;
           }
         });
@@ -80,6 +77,10 @@ $cover-animation-delay: 0.25s;
       transition-delay: $cover-animation-delay;
     }
 
+    &.top-item__cover-two {
+      background-color: var(--bkg-color);
+    }
+
     &.--open {
       left: unset;
       right: 0;
@@ -95,7 +96,7 @@ $cover-animation-delay: 0.25s;
   align-items: center;
   margin: 50px 0;
   height: 100%;
-  background-color: white;
+  background-color: var(--bkg-color);
   position: relative;
   top: 0;
   left: 0;
