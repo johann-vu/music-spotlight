@@ -1,5 +1,5 @@
 <template>
-  <div class="top-item__wrapper">
+  <div class="top-item__wrapper" :style="{'background-color': accentColour}">
     <div class="top-item__content" @click="openURL">
       <img class="top-item__image" :src="item.imageURL" />
       <div class="top-item__infos">
@@ -12,8 +12,15 @@
   </div>
 </template>
 <script>
+import * as Vibrant from "../../node_modules/node-vibrant/dist/vibrant.js";
 export default {
   name: "TopItem",
+  data() {
+    return {
+      accentColour: "#FFFFFF",
+      oldAccentColour: "#FFFFFF"
+    };
+  },
   props: {
     item: Object,
   },
@@ -21,13 +28,26 @@ export default {
     openURL() {
       window.location = this.item.url;
     },
+    setAccentColor() {
+      return Vibrant.from(this.item.imageURL)
+        .getPalette()
+        .then((palette) => {
+          const hex = palette.Vibrant.getHex();
+          if (hex) {
+            this.oldAccentColour = this.accentColour;
+            this.accentColour = hex;
+          }
+        })
+    },
   },
+  mounted() {
+    this.setAccentColor()
+  }
 };
 </script>
 <style lang="scss" scoped>
 .top-item__wrapper {
   height: 10vh;
-  background-color: blue;
 }
 
 .top-item__content {
