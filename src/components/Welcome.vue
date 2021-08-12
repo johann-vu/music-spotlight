@@ -11,10 +11,10 @@ import { StartLogin } from "../scripts/spotify";
 export default {
   name: "Welcome",
   methods: {
-      login() {
-          StartLogin()
-      }
-  }
+    login() {
+      StartLogin();
+    },
+  },
 };
 </script>
 
@@ -27,13 +27,19 @@ export default {
   height: 100vh;
 }
 
-.welcome__spacer{
-    height: 10vh;
+.welcome__spacer {
+  height: 10vh;
 }
 
 .welcome__title {
   font-weight: bold;
   font-size: 72pt;
   line-height: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .welcome__title {
+    font-size: 50pt;
+  }
 }
 </style>

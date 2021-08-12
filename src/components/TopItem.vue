@@ -65,6 +65,7 @@ $cover-animation-delay: 0.25s;
 
 .top-item__wrapper {
   height: 10vh;
+  min-height: 60px;
   position: relative;
 
   .top-item__cover {
@@ -99,6 +100,7 @@ $cover-animation-delay: 0.25s;
   top: 0;
   left: 0;
   transition: top ease 0.5s, left ease 0.5s, box-shadow ease 0.5s;
+  overflow: hidden;
 
   &:hover {
     cursor: pointer;
@@ -116,6 +118,11 @@ $cover-animation-delay: 0.25s;
   }
 
   .top-item__infos {
+      white-space: nowrap;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      
     .top-item__title {
       font-weight: bold;
       font-size: 24pt;
@@ -124,6 +131,14 @@ $cover-animation-delay: 0.25s;
 
     .top-item__sub-title {
       margin: 0;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .top-item__infos {
+      .top-item__title {
+        font-size: 16pt;
+      }
     }
   }
 }
