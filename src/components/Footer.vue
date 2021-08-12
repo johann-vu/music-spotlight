@@ -21,6 +21,11 @@
     .footer__icon {
       height: 32px;
       width: 32px;
+      opacity: 0.6;
+      transition: opacity 0.5s;
+    &:hover {
+      opacity: 1;
+    }
     }
   }
 }
