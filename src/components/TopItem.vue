@@ -60,6 +60,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+$cover-animation-duration: 0.5s;
+$cover-animation-delay: 0.25s;
+
 .top-item__wrapper {
   height: 10vh;
   position: relative;
@@ -70,10 +73,10 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    transition: width ease-in-out 0.5s;
+    transition: width ease-in-out $cover-animation-duration;
 
     &.top-item__cover-one {
-      transition-delay: 0.2s;
+      transition-delay: $cover-animation-delay;
     }
 
     &.--open {
