@@ -1,20 +1,24 @@
 const DARK_MODE_CLASS = "dark-mode";
 const DARK_MODE_ON = "dark";
-
-import { Config } from "../config";
+const DARK_MODE_OFF = "light";
+const DARK_MODE_KEY = "dark-mode";
 
 export function ToggleDarkMode() {
-    let state = document.body.classList.contains(DARK_MODE_CLASS)
-    SetDarkMode(!state)
+  let state = document.body.classList.contains(DARK_MODE_CLASS);
+  SetDarkMode(!state);
 }
 
 export function StartListeningForDarkMode() {
-  if (
+  var savedValue = localStorage.getItem(DARK_MODE_KEY)
+  if (savedValue) {
+    SetDarkMode(savedValue == DARK_MODE_ON)
+  } else if (
     window.matchMedia &&
     window.matchMedia("(prefers-color-scheme: dark)").matches
   ) {
-    SetDarkMode(true)
+    SetDarkMode(true);
   }
+
   window
     .matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", (e) => {
@@ -25,12 +29,9 @@ export function StartListeningForDarkMode() {
 }
 
 function SetDarkMode(darkModeOn) {
-    if (Config.EnableDarkMode) {
-      darkModeOn ? turnOnDarkMode() : turnOffDarkMode();
-    } else if (darkModeOn) {
-      console.log("Dark mode is disabled.");
-    }
-  }
+  localStorage.setItem(DARK_MODE_KEY, darkModeOn ? DARK_MODE_ON : DARK_MODE_OFF)
+  darkModeOn ? turnOnDarkMode() : turnOffDarkMode();
+}
 
 function turnOnDarkMode() {
   if (!document.body.classList.contains(DARK_MODE_CLASS)) {

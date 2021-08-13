@@ -8,7 +8,6 @@
       <img class="footer__icon --light" src="@/assets/github-icon-dark.svg" />
     </a>
     <div
-      v-if="showDarkMode"
       class="footer__icon-wrapper"
       @click="toggleDarkMode"
     >
@@ -21,17 +20,11 @@
 
 <script>
 import { ToggleDarkMode } from "../scripts/darkMode.js";
-import { Config } from "../config";
 export default {
   name: "Footer",
   methods: {
     toggleDarkMode() {
       ToggleDarkMode();
-    },
-  },
-  computed: {
-    showDarkMode() {
-      return Config.EnableDarkMode;
     },
   },
 };
