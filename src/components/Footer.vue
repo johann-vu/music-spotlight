@@ -15,13 +15,6 @@
       <img class="footer__icon --light" src="@/assets/night-icon.svg" />
       <img class="footer__icon --dark" src="@/assets/sun-icon.svg" />
     </div>
-    <router-link
-      class="footer__icon-wrapper"
-      to="/about"
-    >
-      <img class="footer__icon --dark" src="@/assets/info-icon-light.svg" />
-      <img class="footer__icon --light" src="@/assets/info-icon-dark.svg" />
-    </router-link>
   </div>
   
 </template>
