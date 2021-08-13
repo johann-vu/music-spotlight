@@ -5,9 +5,13 @@
 
 <script>
 import Footer from "./components/Footer.vue";
+import { StartListeningForDarkMode } from "./scripts/darkMode.js";
 export default {
   components: {
     Footer,
+  },
+  mounted() {
+      StartListeningForDarkMode();
   },
 };
 </script>

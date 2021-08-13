@@ -46,7 +46,8 @@ export default {
   }
 
   &.--selected {
-    text-decoration: underline black;
+    text-decoration: underline;
+    text-decoration-color: var(--text-color);
   }
 }
 </style>

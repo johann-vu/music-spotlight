@@ -50,7 +50,6 @@ export default {
   },
   mounted() {
     this.setAccentColor().finally(() => {
-      console.log("done");
       this.open = true;
     });
   },

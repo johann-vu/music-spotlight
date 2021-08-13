@@ -5,6 +5,10 @@ body {
   color: var(--text-color);
 }
 
+* {
+  transition: background-color 0.3s ease, color 0.3 ease;
+}
+
 .yms__button {
   font-size: 16pt;
   font-weight: bold;

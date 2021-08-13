@@ -1,9 +1,9 @@
-:root {
-  --text-color: #121212;
+body {
+  --text-color: #000;
   --bkg-color: #fff;
 
-//   @media (prefers-color-scheme: dark) {
-//     --text-color: #fff;
-//     --bkg-color: #121212;
-//   }
+  &.dark-mode {
+    --text-color: rgb(228, 228, 228);
+    --bkg-color: #121212;
+  }
 }
