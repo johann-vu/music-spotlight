@@ -51,7 +51,4 @@ export default {
 </script>
 
 <style scoped>
-.top-view__wrapper {
-    min-height: 100vh;
-}
 </style>

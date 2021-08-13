@@ -1,5 +1,5 @@
 <template>
-  <router-view />
+  <router-view class="app__router-view" />
   <Footer />
 </template>
 
@@ -26,5 +26,9 @@ export default {
 body {
   margin: 0;
   padding: 0 10%;
+}
+
+.app__router-view {
+  min-height: 100vh;
 }
 </style>

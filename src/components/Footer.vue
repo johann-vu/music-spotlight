@@ -4,21 +4,26 @@
       class="footer__icon-wrapper"
       href="https://github.com/johann-vu/music-spotlight"
     >
-      <img class="footer__icon --dark" src="@/assets/GitHub-Mark-64px.png" />
-      <img
-        class="footer__icon --light"
-        src="@/assets/GitHub-Mark-Light-64px.png"
-      />
+      <img class="footer__icon --dark" src="@/assets/github-icon-light.svg" />
+      <img class="footer__icon --light" src="@/assets/github-icon-dark.svg" />
     </a>
     <div
       v-if="showDarkMode"
       class="footer__icon-wrapper"
       @click="toggleDarkMode"
     >
-      <img class="footer__icon --dark" src="@/assets/night-icon.svg" />
-      <img class="footer__icon --light" src="@/assets/sun-icon.svg" />
+      <img class="footer__icon --light" src="@/assets/night-icon.svg" />
+      <img class="footer__icon --dark" src="@/assets/sun-icon.svg" />
     </div>
+    <router-link
+      class="footer__icon-wrapper"
+      to="/about"
+    >
+      <img class="footer__icon --dark" src="@/assets/info-icon-light.svg" />
+      <img class="footer__icon --light" src="@/assets/info-icon-dark.svg" />
+    </router-link>
   </div>
+  
 </template>
 
 <script>
@@ -53,11 +58,12 @@ export default {
       width: 32px;
       opacity: 0.6;
       transition: opacity 0.5s;
+      color: var(--text-color);
 
-      &.--dark {
+      &.--light {
         display: var(--dark-mode-hidden);
       }
-      &.--light {
+      &.--dark {
         display: var(--dark-mode-visible);
       }
       &:hover {
