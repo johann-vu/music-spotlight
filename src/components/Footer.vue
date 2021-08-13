@@ -10,8 +10,34 @@
         src="@/assets/GitHub-Mark-Light-64px.png"
       />
     </a>
+    <div
+      v-if="showDarkMode"
+      class="footer__icon-wrapper"
+      @click="toggleDarkMode"
+    >
+      <img class="footer__icon --dark" src="@/assets/night-icon.svg" />
+      <img class="footer__icon --light" src="@/assets/sun-icon.svg" />
+    </div>
   </div>
 </template>
+
+<script>
+import { ToggleDarkMode } from "../scripts/darkMode.js";
+import { Config } from "../config";
+export default {
+  name: "Footer",
+  methods: {
+    toggleDarkMode() {
+      ToggleDarkMode();
+    },
+  },
+  computed: {
+    showDarkMode() {
+      return Config.EnableDarkMode;
+    },
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 .footer__wrapper {
@@ -36,6 +62,7 @@
       }
       &:hover {
         opacity: 1;
+        cursor: pointer;
       }
     }
   }

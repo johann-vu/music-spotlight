@@ -3,12 +3,9 @@ const DARK_MODE_ON = "dark";
 
 import { Config } from "../config";
 
-export function SetDarkMode(darkModeOn) {
-  if (Config.EnableDarkMode) {
-    darkModeOn ? turnOnDarkMode() : turnOffDarkMode();
-  } else if (darkModeOn) {
-    console.log("Dark mode is disabled.");
-  }
+export function ToggleDarkMode() {
+    let state = document.body.classList.contains(DARK_MODE_CLASS)
+    SetDarkMode(!state)
 }
 
 export function StartListeningForDarkMode() {
@@ -26,6 +23,14 @@ export function StartListeningForDarkMode() {
       SetDarkMode(newColorScheme === DARK_MODE_ON);
     });
 }
+
+function SetDarkMode(darkModeOn) {
+    if (Config.EnableDarkMode) {
+      darkModeOn ? turnOnDarkMode() : turnOffDarkMode();
+    } else if (darkModeOn) {
+      console.log("Dark mode is disabled.");
+    }
+  }
 
 function turnOnDarkMode() {
   if (!document.body.classList.contains(DARK_MODE_CLASS)) {
