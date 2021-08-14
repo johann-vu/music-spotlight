@@ -2,19 +2,36 @@
   <div class="welcome__start">
     <span class="welcome__title">Your<br />Music<br />Spotlight</span>
     <div class="welcome__spacer"></div>
-    <a class="welcome__auth-link yms__button" @click="login">Let's go!</a>
+    <router-link v-if="username" to="/top" class="welcome__auth-link yms__button">Welcome back, {{username}}!</router-link>
+    <a v-else class="welcome__auth-link yms__button" @click="login">Let's go!</a>
   </div>
 </template>
 
 <script>
-import { StartLogin } from "../scripts/spotify";
+import { StartLogin, isTokenValid, MakeSpotifyGETRequest } from "../scripts/spotify";
 export default {
   name: "Welcome",
+  data() {
+    return {
+      username: ''
+    }
+  },
   methods: {
     login() {
       StartLogin();
     },
+    tryOldToken() {
+      if (isTokenValid()) {
+        MakeSpotifyGETRequest("https://api.spotify.com/v1/me")
+          .then((profile) => {
+            this.username = profile.display_name
+          })
+      }
+    }
   },
+  mounted() {
+    this.tryOldToken()
+  }
 };
 </script>
 

@@ -3,6 +3,7 @@ const REDIRECT_URI = "http://localhost:8080/callback";
 const SCOPE = "user-top-read";
 const STATE_KEY = "spotify_auth_state";
 const TOKEN_KEY = "spotify_auth_token";
+const EXPIRY_TIMESTAMP = "spotify_expires_on"
 
 export function StartLogin() {
   var state = generateRandomString(16);
@@ -29,6 +30,10 @@ export function EvaluateCallback() {
   if (!params.access_token) {
     return false;
   }
+  if (params.expires_in) {
+    var expiry_timestamp = Date.now() + params.expires_in * 1000 * 0.8
+    localStorage.setItem(EXPIRY_TIMESTAMP, expiry_timestamp)
+  }
   localStorage.setItem(TOKEN_KEY, params.access_token);
   return true;
 }
@@ -49,6 +54,17 @@ export async function MakeSpotifyGETRequest(uri) {
   }
   
   return await response.json()
+}
+
+export function isTokenValid() {
+  var timestamp = localStorage.getItem(EXPIRY_TIMESTAMP)
+  if (!timestamp) {
+    return
+  }
+  var parsed = parseInt(timestamp)
+  if (parsed) {
+    return Date.now() < parsed
+  }
 }
 
 function generateRandomString(length) {
