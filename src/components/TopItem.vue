@@ -1,11 +1,11 @@
 <template>
   <div class="top-item__wrapper" :style="{ 'background-color': accentColour }">
     <div class="top-item__content" @click="openURL">
-      <img class="top-item__image" :src="item.imageURL" />
+      <img class="top-item__image" :src="internalItem.imageURL" />
       <div class="top-item__infos">
-        <p class="top-item__title">{{ item.title }}</p>
+        <p class="top-item__title">{{ internalItem.title }}</p>
         <span class="top-item__sub-title">{{
-          item.subtitle ? item.subtitle : "-"
+          internalItem.subtitle ? internalItem.subtitle : "-"
         }}</span>
       </div>
     </div>
@@ -15,6 +15,13 @@
       :class="{ '--open': open }"
     ></div>
     <div
+      v-if="isFirst"
+      class="top-item__cover top-item__cover-two --is-first"
+      :class="{ '--open': open }"
+    ></div>
+    <div
+      v-else
+      :style="{ 'background-color': oldAccentColour }"
       class="top-item__cover top-item__cover-two"
       :class="{ '--open': open }"
     ></div>
@@ -26,16 +33,40 @@ export default {
   name: "TopItem",
   data() {
     return {
+      oldAccentColour: "#FFFFFF",
       accentColour: "#FFFFFF",
       open: false,
+      isFirst: true,
+      internalItem: {
+        title: "",
+        subtitle: "",
+        imageURL: "",
+      },
     };
   },
   props: {
-    item: Object,
+    item: {
+      type: Object,
+      default() {
+        return {
+          title: "",
+          subtitle: "",
+          imageURL: "",
+        };
+      },
+    },
   },
   methods: {
     openURL() {
-      window.location = this.item.url;
+      window.location = this.internalItem.url;
+    },
+    openItem() {
+      this.open = true
+      return new Promise(resolve => setTimeout(resolve, 750))
+    },
+    closeItem() {
+      this.open = false
+      return new Promise(resolve => setTimeout(resolve, 750))
     },
     setAccentColor() {
       return Vibrant.from(this.item.imageURL)
@@ -48,10 +79,24 @@ export default {
         });
     },
   },
+  watch: {
+    item() {
+      this.oldAccentColour = this.accentColour;
+      this.closeItem()
+        .then(() => {
+          this.internalItem = this.item;
+          return this.setAccentColor()
+        })
+        .then(() => {
+          return this.openItem()
+        })
+        .then(() => this.isFirst = false)
+    },
+  },
   mounted() {
-    this.setAccentColor().finally(() => {
-      this.open = true;
-    });
+    // this.setAccentColor().finally(() => {
+    //   this.open = true;
+    // });
   },
 };
 </script>
@@ -76,7 +121,7 @@ $cover-animation-delay: 0.25s;
       transition-delay: $cover-animation-delay;
     }
 
-    &.top-item__cover-two {
+    &.--is-first {
       background-color: var(--bkg-color);
     }
 
@@ -118,11 +163,11 @@ $cover-animation-delay: 0.25s;
   }
 
   .top-item__infos {
-      white-space: nowrap;
-      width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
     .top-item__title {
       font-weight: bold;
       font-size: 24pt;

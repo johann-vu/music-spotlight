@@ -1,5 +1,5 @@
 <template>
-    <TopItem v-for="item in listItems" :key="item.id" :item="item" />
+    <TopItem v-for="i in 20" :key="i" :item="listItems[i]" />
 </template>
 
 <script>
