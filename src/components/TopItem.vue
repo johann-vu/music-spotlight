@@ -93,11 +93,6 @@ export default {
         .then(() => this.isFirst = false)
     },
   },
-  mounted() {
-    // this.setAccentColor().finally(() => {
-    //   this.open = true;
-    // });
-  },
 };
 </script>
 <style lang="scss" scoped>
