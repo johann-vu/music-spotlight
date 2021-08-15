@@ -1,0 +1,10 @@
+{
+  "lets_go": "Let's go!",
+  "welcome_back": "Welcome back, {name}!",
+  "continue": "Continue",
+  "logged_in_as": "You are logged in as {name}.",
+  "tracks": "Tracks",
+  "artists": "Artists",
+  "back": "Back",
+  "error_occured": "An error occured."
+}

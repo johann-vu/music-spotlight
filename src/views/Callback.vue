@@ -5,9 +5,9 @@
       :username="this.profile.display_name"
       :imageURL="this.profile?.images[0].url"
     />
-    <router-link v-if="success" to="/top" class="yms__button">Continue</router-link>
-    <div v-if="!success">An error occured.</div>
-    <router-link v-if="!success" to="/" class="yms__button">Back</router-link>
+    <router-link v-if="success" to="/top" class="yms__button">{{ $t("continue") }}</router-link>
+    <div v-if="!success">{{ $t("error_occured") }}</div>
+    <router-link v-if="!success" to="/" class="yms__button">{{ $t("back") }}</router-link>
   </div>
 </template>
 <script>

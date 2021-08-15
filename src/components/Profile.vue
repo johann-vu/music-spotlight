@@ -4,7 +4,7 @@
     <div class="profile__circle __placeholder" v-else>
       <span class="profile__circle-letter">{{ firstChar }}</span>
     </div>
-    <span class="profile__username">You are logged in as {{ username }}.</span>
+    <span class="profile__username">{{ $t("logged_in_as", { name: username }) }}</span>
   </div>
 </template>
 <script>

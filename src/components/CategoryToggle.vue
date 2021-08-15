@@ -17,8 +17,8 @@ export default {
   data() {
     return {
       options: [
-        { id: "tracks", display: "Tracks" },
-        { id: "artists", display: "Artists" },
+        { id: "tracks", display: this.$t("tracks") },
+        { id: "artists", display: this.$t("artists") },
       ],
       selected: "tracks",
     };
