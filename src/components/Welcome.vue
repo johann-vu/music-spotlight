@@ -9,7 +9,7 @@
       >{{ $t("welcome_back", { name: username }) }}</router-link
     >
     <a v-else class="welcome__auth-link yms__button" @click="login">{{
-      $t("welcome.lets_go")
+      $t("lets_go")
     }}</a>
   </div>
 </template>
