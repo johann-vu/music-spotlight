@@ -40,14 +40,17 @@ export default {
 .cat-toggle__option {
   margin: 5px;
   font-weight: bold;
+  opacity: 0.5;
+  transition: opacity ease 0.5s;
 
   &:hover {
     cursor: pointer;
+    opacity: 1;
   }
 
   &.--selected {
-    text-decoration: underline;
-    text-decoration-color: var(--text-color);
+    border-bottom: solid 3px var(--text-color);  
+    opacity: 1;
   }
 }
 </style>
