@@ -1,7 +1,9 @@
 <template>
   <div class="top-item__wrapper" :style="{ 'background-color': accentColour }">
     <div class="top-item__content" @click="openURL">
-      <img class="top-item__image" :src="internalItem.imageURL" />
+      <div class="top-item__image-wrapper">
+        <img class="top-item__image" :src="internalItem.imageURL" />
+      </div>
       <div class="top-item__infos">
         <p class="top-item__title">{{ internalItem.title }}</p>
         <span class="top-item__sub-title">{{
@@ -61,12 +63,12 @@ export default {
       window.location = this.internalItem.url;
     },
     openItem() {
-      this.open = true
-      return new Promise(resolve => setTimeout(resolve, 750))
+      this.open = true;
+      return new Promise((resolve) => setTimeout(resolve, 750));
     },
     closeItem() {
-      this.open = false
-      return new Promise(resolve => setTimeout(resolve, 750))
+      this.open = false;
+      return new Promise((resolve) => setTimeout(resolve, 750));
     },
     setAccentColor() {
       return Vibrant.from(this.item.imageURL)
@@ -85,12 +87,12 @@ export default {
       this.closeItem()
         .then(() => {
           this.internalItem = this.item;
-          return this.setAccentColor()
+          return this.setAccentColor();
         })
         .then(() => {
-          return this.openItem()
+          return this.openItem();
         })
-        .then(() => this.isFirst = false)
+        .then(() => (this.isFirst = false));
     },
   },
 };
@@ -98,10 +100,12 @@ export default {
 <style lang="scss" scoped>
 $cover-animation-duration: 0.5s;
 $cover-animation-delay: 0.25s;
+$item-heigth: 10vh;
+$min-item-height: 80px;
 
 .top-item__wrapper {
-  height: 10vh;
-  min-height: 80px;
+  height: $item-heigth;
+  min-height: $min-item-height;
   position: relative;
 
   .top-item__cover {
@@ -150,11 +154,18 @@ $cover-animation-delay: 0.25s;
     box-shadow: 10px 10px 15px 2px rgba(0, 0, 0, 0.2);
   }
 
-  .top-item__image {
-    background-color: black;
-    flex: none;
+  .top-item__image-wrapper {
     height: 100%;
+    min-width: $min-item-height;
+    width: $item-heigth;
     margin-right: 16px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    .top-item__image {
+      flex: none;
+      height: 100%;
+    }
   }
 
   .top-item__infos {
