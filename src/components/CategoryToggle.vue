@@ -1,13 +1,26 @@
 <template>
   <div class="cat-toggle__wrapper">
-    <span
-      @click="changeSelection(opt.id)"
-      v-for="opt in options"
-      :key="opt.id"
-      class="cat-toggle__option"
-      :class="{'--selected': selected === opt.id}"
-      >{{ opt.display }}</span
-    >
+    <div class="cat-toggle__toggle-set">
+      <span
+        @click="changeCategory(opt.id)"
+        v-for="opt in categories"
+        :key="opt.id"
+        class="cat-toggle__option"
+        :class="{ '--selected': selectedCategory === opt.id }"
+        >{{ opt.display }}</span
+      >
+    </div>
+    <div class="cat-toggle__divider"></div>
+    <div class="cat-toggle__toggle-set">
+      <span
+        @click="changeTimeRange(opt.id)"
+        v-for="opt in timeRanges"
+        :key="opt.id"
+        class="cat-toggle__option"
+        :class="{ '--selected': selectedTimeRange === opt.id }"
+        >{{ opt.display }}</span
+      >
+    </div>
   </div>
 </template>
 
@@ -16,32 +29,66 @@ export default {
   name: "CategoryToggle",
   data() {
     return {
-      options: [
+      categories: [
         { id: "tracks", display: this.$t("tracks") },
         { id: "artists", display: this.$t("artists") },
       ],
-      selected: "tracks",
+      selectedCategory: "tracks",
+      timeRanges: [
+        { id: "short_term", display: this.$t("short_term") },
+        { id: "medium_term", display: this.$t("medium_term") },
+        { id: "long_term", display: this.$t("long_term") },
+      ],
+      selectedTimeRange: "medium_term",
     };
   },
   methods: {
-    changeSelection(newSelection) {
-      this.selected = newSelection;
+    changeCategory(newSelection) {
+      this.selectedCategory = newSelection;
+    },
+    changeTimeRange(newSelection) {
+      this.selectedTimeRange = newSelection;
     },
   },
   watch: {
-    selected(newCategory) {
+    selectedCategory(newCategory) {
       this.$emit("category-changed", newCategory);
+    },
+    selectedTimeRange(newTimeRange) {
+      this.$emit("timerange-changed", newTimeRange);
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.cat-toggle__wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.cat-toggle__toggle-set {
+  margin-top: 10px;
+  overflow-x: scroll;
+  overflow: hidden;
+  padding-bottom: 3px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &:first-of-type {
+    margin-right: 20px;
+  }
+}
+
 .cat-toggle__option {
   margin: 5px;
   font-weight: bold;
   opacity: 0.5;
   transition: opacity ease 0.5s;
+  white-space: nowrap;
 
   &:hover {
     cursor: pointer;
@@ -49,8 +96,8 @@ export default {
   }
 
   &.--selected {
-    border-bottom: solid 3px var(--text-color);  
     opacity: 1;
+    border-bottom: 3px solid var(--text-color);
   }
 }
 </style>

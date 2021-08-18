@@ -1,8 +1,11 @@
 <template>
   <div class="top-view__wrapper">
     <h1>Your Music Spotlight</h1>
-    <CategoryToggle @category-changed="handleCategoryChange" />
-    <TopList :listItems="visibleItems" />
+    <CategoryToggle
+      @category-changed="handleCategoryChange"
+      @timerange-changed="handleTimeRangeChange"
+    />
+    <TopList :listItems="topItems" />
   </div>
 </template>
 <script>
@@ -14,21 +17,29 @@ export default {
   name: "Top",
   data() {
     return {
-      visible: "tracks",
+      category: "tracks",
+      timeRange: "medium_term",
+      topItems: [],
       topTracks: [],
       topArtists: [],
     };
-  },
-  computed: {
-    visibleItems() {
-      return this.visible === "tracks" ? this.topTracks : this.topArtists;
-    },
   },
   components: {
     TopList,
     CategoryToggle,
   },
   methods: {
+    getData() {
+      let url = `https://api.spotify.com/v1/me/top/${this.category}?time_range=${this.timeRange}`;
+      MakeSpotifyGETRequest(url)
+        .then((results) => {
+          return this.category === "artists"
+            ? ConvertArtists(results.items)
+            : ConvertTracks(results.items);
+        })
+        .then((items) => (this.topItems = items))
+        .catch((err) => console.log(err));
+    },
     getTopArtists() {
       MakeSpotifyGETRequest("https://api.spotify.com/v1/me/top/artists")
         .then((res) => (this.topArtists = ConvertArtists(res.items)))
@@ -40,12 +51,22 @@ export default {
         .catch((err) => console.log(err));
     },
     handleCategoryChange(selection) {
-      this.visible = selection;
+      this.category = selection;
+    },
+    handleTimeRangeChange(selection) {
+      this.timeRange = selection;
+    },
+  },
+  watch: {
+    category() {
+      this.getData();
+    },
+    timeRange() {
+      this.getData();
     },
   },
   mounted() {
-    this.getTopArtists();
-    this.getTopTracks();
+    this.getData();
   },
 };
 </script>

@@ -6,5 +6,8 @@
   "tracks": "Tracks",
   "artists": "Artists",
   "back": "Back",
-  "error_occured": "An error occured."
+  "error_occured": "An error occured.",
+  "short_term": "Short Term",
+  "medium_term": "Medium Term",
+  "long_term": "Long Term"
 }
