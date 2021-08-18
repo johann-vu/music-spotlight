@@ -72,6 +72,7 @@ export default {
   margin-top: 10px;
   overflow-x: scroll;
   overflow: hidden;
+  padding-bottom: 3px;
 
   &::-webkit-scrollbar {
     display: none;
@@ -96,6 +97,7 @@ export default {
 
   &.--selected {
     opacity: 1;
+    border-bottom: 3px solid var(--text-color);
   }
 }
 </style>
