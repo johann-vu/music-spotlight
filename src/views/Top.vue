@@ -6,6 +6,7 @@
       @timerange-changed="handleTimeRangeChange"
     />
     <TopList :listItems="topItems" />
+    <Profile />
   </div>
 </template>
 <script>
@@ -13,6 +14,7 @@ import { MakeSpotifyGETRequest } from "../scripts/spotify";
 import { ConvertArtists, ConvertTracks } from "../scripts/converter";
 import TopList from "../components/TopList.vue";
 import CategoryToggle from "../components/CategoryToggle.vue";
+import Profile from "../components/Profile.vue"
 export default {
   name: "Top",
   data() {
@@ -20,13 +22,12 @@ export default {
       category: "tracks",
       timeRange: "medium_term",
       topItems: [],
-      topTracks: [],
-      topArtists: [],
     };
   },
   components: {
     TopList,
     CategoryToggle,
+    Profile
   },
   methods: {
     getData() {
@@ -38,16 +39,6 @@ export default {
             : ConvertTracks(results.items);
         })
         .then((items) => (this.topItems = items))
-        .catch((err) => console.log(err));
-    },
-    getTopArtists() {
-      MakeSpotifyGETRequest("https://api.spotify.com/v1/me/top/artists")
-        .then((res) => (this.topArtists = ConvertArtists(res.items)))
-        .catch((err) => console.log(err));
-    },
-    getTopTracks() {
-      MakeSpotifyGETRequest("https://api.spotify.com/v1/me/top/tracks")
-        .then((res) => (this.topTracks = ConvertTracks(res.items)))
         .catch((err) => console.log(err));
     },
     handleCategoryChange(selection) {

@@ -1,41 +1,52 @@
 <template>
   <div class="profile__wrapper">
-    <img class="profile__circle" v-if="imageURL" :src="imageURL" />
-    <div class="profile__circle __placeholder" v-else>
-      <span class="profile__circle-letter">{{ firstChar }}</span>
-    </div>
-    <span class="profile__username">{{ $t("logged_in_as", { name: username }) }}</span>
+    <Snackbar :message="loginMessage" :imageURL="imageURL" />
   </div>
 </template>
 <script>
+import Snackbar from "./Snackbar.vue";
+import { MakeSpotifyGETRequest } from "../scripts/spotify.js";
 export default {
   name: "Profile",
-  props: {
-    username: String,
-    imageURL: {
-      type: String,
-      required: false,
-    },
+  data() {
+    return {
+      profile: null,
+    };
+  },
+  components: {
+    Snackbar,
   },
   computed: {
-    firstChar() {
-      return this.username.toUpperCase().charAt(0);
+    loginMessage() {
+      if (!this.profile) {
+        return "";
+      }
+      if (this.$route.query.newToken) {
+        return this.$t("logged_in_as", { name: this.profile.display_name });
+      }
+      return this.$t("welcome_back", { name: this.profile.display_name });
     },
+    imageURL() {
+      if (this.profile?.images[0].url) {
+        return this.profile.images[0].url;
+      }
+      return "";
+    },
+  },
+  methods: {
+    loadProfile() {
+      MakeSpotifyGETRequest("https://api.spotify.com/v1/me").then((profile) => {
+        this.profile = profile;
+      });
+    },
+  },
+  mounted() {
+    this.loadProfile();
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.profile__wrapper {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
-  .profile__username {
-    margin: 20px;
-  }
-}
-
 .profile__circle {
   height: 100px;
   width: 100px;
