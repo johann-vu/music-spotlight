@@ -1,4 +1,5 @@
 <template>
+  <Snackbar />
   <router-view class="app__router-view" />
   <Footer />
 </template>
@@ -6,12 +7,14 @@
 <script>
 import Footer from "./components/Footer.vue";
 import { StartListeningForDarkMode } from "./scripts/darkMode.js";
+import Snackbar from "./components/Snackbar.vue";
 export default {
   components: {
     Footer,
+    Snackbar,
   },
   mounted() {
-      StartListeningForDarkMode();
+    StartListeningForDarkMode();
   },
 };
 </script>
