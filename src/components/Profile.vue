@@ -21,10 +21,7 @@ export default {
       if (!this.profile) {
         return "";
       }
-      if (this.$route.query.newToken) {
-        return this.$t("logged_in_as", { name: this.profile.display_name });
-      }
-      return this.$t("welcome_back", { name: this.profile.display_name });
+      return this.$t("logged_in_as", { name: this.profile.display_name });
     },
     imageURL() {
       if (this.profile?.images[0].url) {
