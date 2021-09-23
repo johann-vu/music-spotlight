@@ -1,20 +1,17 @@
 <template>
   <div class="snackbar__wrapper">
-    <div v-if="open" class="snackbar__body">
-      <img v-if="imageURL" :src="imageURL" class="snackbar__image" />
-      <span class="snackbar__message">{{ message }}</span>
-    </div>
+    <transition name="slide">
+      <div v-if="open" class="snackbar__body">
+        <img v-if="imageURL" :src="imageURL" class="snackbar__image" />
+        <span class="snackbar__message">{{ message }}</span>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
 export default {
   name: "Snackbar",
-  data() {
-    return {
-      open: true,
-    };
-  },
   props: {
     imageURL: {
       type: String,
@@ -24,6 +21,7 @@ export default {
       type: String,
       required: false,
     },
+    open: Boolean,
   },
 };
 </script>
@@ -36,7 +34,7 @@ export default {
   z-index: 1;
 
   .snackbar__body {
-    margin: 30px;
+    margin: 30px 10vw;
     padding: 10px;
     width: 200px;
     display: flex;
@@ -46,9 +44,17 @@ export default {
     border: solid var(--text-color);
     background-color: var(--bkg-color);
 
+    transition: all 0.8s ease;
+
+    &.slide-enter,
+    &.slide-leave-to {
+      transform: translateX(30px);
+      opacity: 0;
+    }
+
     .snackbar__image {
-        height: 50px;
-        margin-right: 10px;
+      height: 50px;
+      margin-right: 10px;
     }
   }
 }

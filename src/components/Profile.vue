@@ -1,6 +1,6 @@
 <template>
   <div class="profile__wrapper">
-    <Snackbar :message="loginMessage" :imageURL="imageURL" />
+  <Snackbar :open="open" :message="loginMessage" :imageURL="imageURL" />
   </div>
 </template>
 <script>
@@ -11,6 +11,7 @@ export default {
   data() {
     return {
       profile: null,
+      open: false,
     };
   },
   components: {
@@ -32,33 +33,18 @@ export default {
   },
   methods: {
     loadProfile() {
-      MakeSpotifyGETRequest("https://api.spotify.com/v1/me").then((profile) => {
-        this.profile = profile;
-      });
+      return MakeSpotifyGETRequest("https://api.spotify.com/v1/me").then(
+        (profile) => {
+          this.profile = profile;
+        }
+      );
     },
   },
   mounted() {
-    this.loadProfile();
+    this.loadProfile().then(() => {
+      this.open = true;
+      setTimeout(() => (this.open = false), 3000);
+    });
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.profile__circle {
-  height: 100px;
-  width: 100px;
-  border-radius: 100px;
-  border: solid black;
-
-  &.__placeholder {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .profile__circle-letter {
-      font-size: 40pt;
-      font-weight: bold;
-    }
-  }
-}
-</style>
