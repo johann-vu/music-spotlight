@@ -1,5 +1,3 @@
-const CLIENT_ID = "";
-const REDIRECT_URI = "http://localhost:8080/callback";
 const SCOPE = "user-top-read";
 const STATE_KEY = "spotify_auth_state";
 const TOKEN_KEY = "spotify_auth_token";
@@ -7,17 +5,17 @@ const EXPIRY_TIMESTAMP = "spotify_expires_on"
 
 export function StartLogin() {
   var state = generateRandomString(16);
+  var client_id = process.env.VUE_APP_SPOTIFY_CLIENT_ID
+  var redirect_uri = window.location.origin + "/callback"
 
   localStorage.setItem(STATE_KEY, state);
 
   var url = "https://accounts.spotify.com/authorize";
   url += "?response_type=token";
-  url += "&client_id=" + encodeURIComponent(CLIENT_ID);
+  url += "&client_id=" + encodeURIComponent(client_id);
   url += "&scope=" + encodeURIComponent(SCOPE);
-  url += "&redirect_uri=" + encodeURIComponent(REDIRECT_URI);
+  url += "&redirect_uri=" + encodeURIComponent(redirect_uri);
   url += "&state=" + encodeURIComponent(state);
-
-  console.log(url);
 
   window.location = url;
 }
