@@ -15,6 +15,7 @@
       <img class="footer__icon --dark" src="@/assets/sun-icon.svg" />
     </div>
     <div
+      v-if="canLogout"
       class="footer__icon-wrapper"
       @click="logout"
     >
@@ -27,9 +28,14 @@
 
 <script>
 import { ToggleDarkMode } from "../scripts/darkMode.js";
-import { RemoveToken } from "../scripts/spotify.js";
+import { RemoveToken, HasValidToken } from "../scripts/spotify.js";
 export default {
   name: "Footer",
+  computed: {
+    canLogout() {
+      return HasValidToken()
+    },
+  },
   methods: {
     toggleDarkMode() {
       ToggleDarkMode();
