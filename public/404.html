@@ -1,0 +1,5 @@
+<script>
+    const path = window.location.href.replace(location.origin, "");
+    localStorage.setItem('github-pages-path', path);
+    window.location.href=location.origin + "/" + location.pathname.split("/")[1];
+</script>
