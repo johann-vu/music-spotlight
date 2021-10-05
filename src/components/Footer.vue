@@ -14,18 +14,30 @@
       <img class="footer__icon --light" src="@/assets/night-icon.svg" />
       <img class="footer__icon --dark" src="@/assets/sun-icon.svg" />
     </div>
+    <div
+      class="footer__icon-wrapper"
+      @click="logout"
+    >
+      <img class="footer__icon --dark" src="@/assets/logout-icon-light.svg" />
+      <img class="footer__icon --light" src="@/assets/logout-icon-dark.svg" />
+    </div>
   </div>
   
 </template>
 
 <script>
 import { ToggleDarkMode } from "../scripts/darkMode.js";
+import { RemoveToken } from "../scripts/spotify.js";
 export default {
   name: "Footer",
   methods: {
     toggleDarkMode() {
       ToggleDarkMode();
     },
+    logout() {
+      RemoveToken();
+      this.$router.push(process.env.VUE_APP_BASE_PATH)
+    }
   },
 };
 </script>

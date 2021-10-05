@@ -36,6 +36,12 @@ export function EvaluateCallback() {
   return true;
 }
 
+export function RemoveToken() {
+  localStorage.removeItem(STATE_KEY)
+  localStorage.removeItem(EXPIRY_TIMESTAMP)
+  localStorage.removeItem(TOKEN_KEY)
+}
+
 export async function MakeSpotifyGETRequest(uri) {
   const myHeaders = new Headers();
   myHeaders.set("Authorization", "Bearer " + localStorage.getItem(TOKEN_KEY))
