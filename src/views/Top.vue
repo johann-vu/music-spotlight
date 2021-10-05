@@ -10,7 +10,7 @@
   </div>
 </template>
 <script>
-import { MakeSpotifyGETRequest } from "../scripts/spotify";
+import { MakeSpotifyGETRequest, HasValidToken } from "../scripts/spotify";
 import { ConvertArtists, ConvertTracks } from "../scripts/converter";
 import TopList from "../components/TopList.vue";
 import CategoryToggle from "../components/CategoryToggle.vue";
@@ -57,6 +57,9 @@ export default {
     },
   },
   mounted() {
+    if (!HasValidToken()) {
+      this.$router.push(process.env.VUE_APP_BASE_PATH)
+    }
     this.getData();
   },
 };

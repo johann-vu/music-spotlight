@@ -17,7 +17,7 @@
 <script>
 import {
   StartLogin,
-  isTokenValid,
+  HasValidToken,
   MakeSpotifyGETRequest,
 } from "../scripts/spotify";
 export default {
@@ -32,7 +32,7 @@ export default {
       StartLogin();
     },
     tryOldToken() {
-      if (isTokenValid()) {
+      if (HasValidToken()) {
         MakeSpotifyGETRequest("https://api.spotify.com/v1/me").then(
           (profile) => {
             this.username = profile.display_name;

@@ -1,12 +1,13 @@
 const SCOPE = "user-top-read";
 const STATE_KEY = "spotify_auth_state";
 const TOKEN_KEY = "spotify_auth_token";
-const EXPIRY_TIMESTAMP = "spotify_expires_on"
+const EXPIRY_TIMESTAMP = "spotify_expires_on";
 
 export function StartLogin() {
   var state = generateRandomString(16);
-  var client_id = process.env.VUE_APP_SPOTIFY_CLIENT_ID
-  var redirect_uri = window.location.origin + process.env.VUE_APP_BASE_PATH + "callback"
+  var client_id = process.env.VUE_APP_SPOTIFY_CLIENT_ID;
+  var redirect_uri =
+    window.location.origin + process.env.VUE_APP_BASE_PATH + "callback";
 
   localStorage.setItem(STATE_KEY, state);
 
@@ -16,6 +17,7 @@ export function StartLogin() {
   url += "&scope=" + encodeURIComponent(SCOPE);
   url += "&redirect_uri=" + encodeURIComponent(redirect_uri);
   url += "&state=" + encodeURIComponent(state);
+  url += "&show_dialog=true";
 
   window.location = url;
 }
@@ -29,16 +31,22 @@ export function EvaluateCallback() {
     return false;
   }
   if (params.expires_in) {
-    var expiry_timestamp = Date.now() + params.expires_in * 1000 * 0.8
-    localStorage.setItem(EXPIRY_TIMESTAMP, expiry_timestamp)
+    var expiry_timestamp = Date.now() + params.expires_in * 1000 * 0.8;
+    localStorage.setItem(EXPIRY_TIMESTAMP, expiry_timestamp);
   }
   localStorage.setItem(TOKEN_KEY, params.access_token);
   return true;
 }
 
+export function RemoveToken() {
+  localStorage.removeItem(STATE_KEY);
+  localStorage.removeItem(EXPIRY_TIMESTAMP);
+  localStorage.removeItem(TOKEN_KEY);
+}
+
 export async function MakeSpotifyGETRequest(uri) {
   const myHeaders = new Headers();
-  myHeaders.set("Authorization", "Bearer " + localStorage.getItem(TOKEN_KEY))
+  myHeaders.set("Authorization", "Bearer " + localStorage.getItem(TOKEN_KEY));
 
   const myRequest = new Request(uri, {
     method: "GET",
@@ -48,21 +56,27 @@ export async function MakeSpotifyGETRequest(uri) {
   const response = await fetch(myRequest);
 
   if (!response.ok) {
-    return
+    return;
   }
-  
-  return await response.json()
+
+  return await response.json();
 }
 
-export function isTokenValid() {
-  var timestamp = localStorage.getItem(EXPIRY_TIMESTAMP)
-  if (!timestamp) {
-    return
+export function HasValidToken() {
+  if (
+    localStorage.getItem(TOKEN_KEY) &&
+    localStorage.getItem(EXPIRY_TIMESTAMP)
+  ) {
+    var timestamp = localStorage.getItem(EXPIRY_TIMESTAMP);
+    if (timestamp) {
+      var parsed = parseInt(timestamp);
+      if (parsed) {
+        return Date.now() < parsed;
+      }
+    }
   }
-  var parsed = parseInt(timestamp)
-  if (parsed) {
-    return Date.now() < parsed
-  }
+  
+  return false
 }
 
 function generateRandomString(length) {
