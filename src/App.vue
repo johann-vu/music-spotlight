@@ -12,11 +12,6 @@ export default {
   },
   mounted() {
     StartListeningForDarkMode();
-    let path = localStorage.getItem('github-pages-path');
-    if(path) {
-      localStorage.removeItem('github-pages-path');
-      this.$router.push(path);
-    }
   },
 };
 </script>
