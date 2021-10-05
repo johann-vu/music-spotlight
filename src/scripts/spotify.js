@@ -6,7 +6,7 @@ const EXPIRY_TIMESTAMP = "spotify_expires_on"
 export function StartLogin() {
   var state = generateRandomString(16);
   var client_id = process.env.VUE_APP_SPOTIFY_CLIENT_ID
-  var redirect_uri = window.location.origin + "/callback"
+  var redirect_uri = window.location.origin + process.env.VUE_APP_BASE_PATH + "callback"
 
   localStorage.setItem(STATE_KEY, state);
 
