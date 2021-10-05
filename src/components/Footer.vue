@@ -31,10 +31,13 @@ import { ToggleDarkMode } from "../scripts/darkMode.js";
 import { RemoveToken, HasValidToken } from "../scripts/spotify.js";
 export default {
   name: "Footer",
-  computed: {
-    canLogout() {
-      return HasValidToken()
-    },
+  data() {
+    return {
+      canLogout: false
+    };
+  },
+  mounted() {
+    this.canLogout = HasValidToken()
   },
   methods: {
     toggleDarkMode() {
@@ -42,6 +45,7 @@ export default {
     },
     logout() {
       RemoveToken();
+      this.canLogout = false
       this.$router.push(process.env.VUE_APP_BASE_PATH)
     }
   },
