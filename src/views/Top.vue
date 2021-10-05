@@ -58,7 +58,7 @@ export default {
   },
   mounted() {
     if (!HasValidToken()) {
-      this.$router.push(process.env.VUE_APP_BASE_PATH)
+      this.$router.push("/")
     }
     this.getData();
   },

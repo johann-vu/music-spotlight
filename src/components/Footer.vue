@@ -46,7 +46,7 @@ export default {
     logout() {
       RemoveToken();
       this.canLogout = false
-      this.$router.push(process.env.VUE_APP_BASE_PATH)
+      this.$router.push("/")
     }
   },
 };
