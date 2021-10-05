@@ -11,7 +11,7 @@ export default {
     Footer,
   },
   mounted() {
-      StartListeningForDarkMode();
+    StartListeningForDarkMode();
   },
 };
 </script>
