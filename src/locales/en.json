@@ -12,7 +12,7 @@
   "long_term": "Long Term",
   "about_title": "About \"Your Music Spotlight\"",
   "privacy_headline": "Privacy",
-  "about_data_paragraph": "This application does not save any of your data to a serve. Everything is processed on your own device.",
+  "about_data_paragraph": "This application does not save any of your data to a server. Everything is processed on your own device.",
   "about_permissions_paragraph": "If you want to revoke the permissions, go to accounts.spotify.com and remove \"Music Spotlight\" from the list of apps.",
   "acknowledgements_headline": "Acknowledgements"
 }
