@@ -31,9 +31,18 @@ const routes = [
   },
 ];
 
+function scrollBehavior (to, from, savedPosition) {
+  if (savedPosition) {
+    return savedPosition
+  } else {
+    window.scrollTo(0, 0);
+  }
+}
+
 const router = createRouter({
   history: createWebHistory(process.env.VUE_APP_BASE_PATH),
   routes,
+  scrollBehavior
 });
 
 export default router;
