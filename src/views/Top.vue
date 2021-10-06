@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     getData() {
-      let url = `https://api.spotify.com/v1/me/top/${this.category}?time_range=${this.timeRange}`;
+      let url = `https://api.spotify.com/v1/me/top/${this.category}?time_range=${this.timeRange}&limit=15`;
       MakeSpotifyGETRequest(url)
         .then((results) => {
           return this.category === "artists"
