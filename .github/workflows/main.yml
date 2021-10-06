@@ -5,7 +5,6 @@ on:
       - main
 jobs:
   build_vue:
-    environment: gh-pages
     runs-on: ubuntu-latest
     name: Build Vue
     steps:
