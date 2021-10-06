@@ -1,5 +1,12 @@
 <template>
   <div class="footer__wrapper">
+    <router-link
+      class="footer__icon-wrapper"
+      to="/about"
+    >
+      <img class="footer__icon --dark" src="@/assets/info-icon-light.svg" />
+      <img class="footer__icon --light" src="@/assets/info-icon-dark.svg" />
+    </router-link>
     <a
       class="footer__icon-wrapper"
       href="https://github.com/johann-vu/music-spotlight"
