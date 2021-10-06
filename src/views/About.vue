@@ -7,7 +7,7 @@
     <h2>{{ $t("acknowledgements_headline") }}</h2>
     <ul>
       <li v-for="ack in acknowledgements" :key="ack.title">
-        <a :href="ack.url">{{ ack.title }}</a> ({{ack.license}})
+        <a :href="ack.url">{{ ack.title }}</a> ({{ ack.license }})
       </li>
     </ul>
   </div>
@@ -26,7 +26,27 @@ export default {
           title: "Node-Vibrant",
           url: "https://github.com/Vibrant-Colors/node-vibrant",
           license: "MIT License",
-        }
+        },
+        {
+          title: "Dart Sass",
+          url: "https://github.com/sass/dart-sass",
+          license: "MIT License",
+        },
+        {
+          title: "Vue",
+          url: "https://vuejs.org",
+          license: "MIT License",
+        },
+        {
+          title: "Vue Router",
+          url: "https://router.vuejs.org",
+          license: "MIT License",
+        },
+        {
+          title: "Vue I18n",
+          url: "https://kazupon.github.io/vue-i18n",
+          license: "MIT License",
+        },
       ],
     };
   },
