@@ -4,6 +4,8 @@ jobs:
   build_vue:
     runs-on: ubuntu-latest
     name: Build Vue
+    env:
+      SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
     steps:
     - uses: actions/checkout@v2
     - id: Build-Vue
