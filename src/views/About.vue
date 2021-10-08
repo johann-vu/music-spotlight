@@ -1,21 +1,34 @@
 <template>
   <div class="about">
     <h1>{{ $t("about_title") }}</h1>
-    <h2>{{ $t("privacy_headline") }}</h2>
-    <p>{{ $t("about_data_paragraph") }}</p>
-    <p>{{ $t("about_permissions_paragraph") }}</p>
-    <h2>{{ $t("acknowledgements_headline") }}</h2>
-    <ul>
-      <li v-for="ack in acknowledgements" :key="ack.title">
-        <a :href="ack.url">{{ ack.title }}</a> ({{ ack.license }})
-      </li>
-    </ul>
+    <p class="about-view__build-info">Version {{version}} Build {{buildHash}}</p>
+    <div class="about-view__segement">
+      <h2>{{ $t("privacy_headline") }}</h2>
+      <p>{{ $t("about_data_paragraph") }}</p>
+      <p>{{ $t("about_permissions_paragraph") }}</p>
+    </div>
+    <div class="about-view__segement">
+      <h2>{{ $t("acknowledgements_headline") }}</h2>
+      <ul>
+        <li v-for="ack in acknowledgements" :key="ack.title">
+          <a :href="ack.url">{{ ack.title }}</a> ({{ ack.license }})
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 <script>
 export default {
   data() {
+    let hash = process.env.VUE_APP_BUILD_HASH
+    if (hash) {
+      hash = hash.substring(0, 7)
+    } else {
+      hash = ""
+    }
     return {
+      version: process.env.VUE_APP_VERSION,
+      buildHash: hash,
       acknowledgements: [
         {
           title: "Tabler Icons",
@@ -52,3 +65,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.about-view__build-info {
+  opacity: 0.6;
+}
+</style>

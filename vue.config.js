@@ -1,3 +1,5 @@
+process.env.VUE_APP_VERSION = require('./package.json').version
+process.env.VUE_APP_BUILD_HASH = process.env.GITHUB_SHA || ""
 module.exports = {
     publicPath: process.env.VUE_APP_BASE_PATH || "/",
 
