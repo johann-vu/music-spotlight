@@ -1,5 +1,6 @@
 process.env.VUE_APP_VERSION = require('./package.json').version
 process.env.VUE_APP_BUILD_HASH = process.env.GITHUB_SHA || ""
+process.env.VUE_APP_SPOTIFY_CLIENT_ID = process.env.SPOTIFY_CLIENT_ID
 module.exports = {
     publicPath: process.env.VUE_APP_BASE_PATH || "/",
 
