@@ -1,9 +1,8 @@
 name: Build Vue
-# on:
-#   push:
-#     branches:
-#       - main
-on : [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build_vue:
