@@ -14,5 +14,6 @@
   "privacy_headline": "Privatsphäre",
   "short_term": "Kurzfristig",
   "tracks": "Titel",
+  "version_info": "Version {version} Build {hash}",
   "welcome_back": "Willkommen zurück, {name}!"
 }

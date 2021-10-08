@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <h1>{{ $t("about_title") }}</h1>
-    <p class="about-view__build-info">Version {{version}} Build {{buildHash}}</p>
+    <p class="about-view__build-info">{{ $t("version_info", { version: version, hash: buildHash }) }}</p>
     <div class="about-view__segement">
       <h2>{{ $t("privacy_headline") }}</h2>
       <p>{{ $t("about_data_paragraph") }}</p>
