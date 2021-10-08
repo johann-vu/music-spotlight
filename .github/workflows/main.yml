@@ -3,7 +3,6 @@ on: [push]
 jobs:
   build_vue:
     runs-on: ubuntu-latest
-    environment: gh-pages
     name: Build Vue
     steps:
     - uses: actions/checkout@v2
