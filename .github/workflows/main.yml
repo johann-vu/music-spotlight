@@ -1,6 +1,5 @@
 name: Build Vue
-on:
-  push:
+on: [push]
 jobs:
   build_vue:
     runs-on: ubuntu-latest
