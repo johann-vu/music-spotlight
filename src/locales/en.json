@@ -1,13 +1,19 @@
 {
-  "lets_go": "Let's go!",
-  "welcome_back": "Welcome back, {name}!",
-  "continue": "Continue",
-  "logged_in_as": "You are logged in as {name}.",
-  "tracks": "Tracks",
+  "about_data_paragraph": "This application does not save any of your data to a server. Everything is processed on your own device.",
+  "about_permissions_paragraph": "If you want to revoke the permissions, go to accounts.spotify.com and remove \"Music Spotlight\" from the list of apps.",
+  "about_title": "About \"Your Music Spotlight\"",
+  "acknowledgements_headline": "Acknowledgements",
   "artists": "Artists",
   "back": "Back",
+  "continue": "Continue",
   "error_occured": "An error occured.",
-  "short_term": "Short Term",
+  "lets_go": "Let's go!",
+  "logged_in_as": "You are logged in as {name}.",
+  "long_term": "Long Term",
   "medium_term": "Medium Term",
-  "long_term": "Long Term"
+  "privacy_headline": "Privacy",
+  "short_term": "Short Term",
+  "tracks": "Tracks",
+  "version_info": "Version {version} Build {hash}",
+  "welcome_back": "Welcome back, {name}!"
 }

@@ -1,0 +1,19 @@
+{
+  "about_data_paragraph": "Diese Anwendung speichert keine Ihrer Daten auf einem Server. Alles wird auf Ihrem eigenen Gerät verarbeitet.",
+  "about_permissions_paragraph": "Wenn Sie die Berechtigungen widerrufen möchten, gehen Sie zu accounts.spotify.com und entfernen Sie \"Music Spotlight\" aus der Liste der Anwendungen.",
+  "about_title": "Über \"Your Music Spotlight\"",
+  "acknowledgements_headline": "Danksagungen",
+  "artists": "Künstler:innen",
+  "back": "Zurück",
+  "continue": "Weiter",
+  "error_occured": "Ein Fehler ist aufgetreten.",
+  "lets_go": "Los geht's!",
+  "logged_in_as": "Sie sind angemeldet als {name}.",
+  "long_term": "Langfristig",
+  "medium_term": "Mittelfristig",
+  "privacy_headline": "Privatsphäre",
+  "short_term": "Kurzfristig",
+  "tracks": "Titel",
+  "version_info": "Version {version} Build {hash}",
+  "welcome_back": "Willkommen zurück, {name}!"
+}

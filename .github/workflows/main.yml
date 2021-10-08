@@ -3,10 +3,15 @@ on:
   push:
     branches:
       - main
+
 jobs:
   build_vue:
+    environment: gh-pages
     runs-on: ubuntu-latest
     name: Build Vue
+    env:
+      SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+      YMS_BASE_PATH: '/music-spotlight/'
     steps:
     - uses: actions/checkout@v2
     - id: Build-Vue
