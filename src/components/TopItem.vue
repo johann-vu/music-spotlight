@@ -176,8 +176,8 @@ $min-item-height: 80px;
 
     .top-item__title {
       font-weight: bold;
-      font-size: 24pt;
-      margin: 0;
+      font-size: 20pt;
+      margin: 0 0 5px 0;
     }
 
     .top-item__sub-title {
