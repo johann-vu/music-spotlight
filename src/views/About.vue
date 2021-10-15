@@ -65,6 +65,11 @@ export default {
           url: "https://github.com/JulietaUla/Montserrat",
           license: "Open Font License",
         },
+        {
+          title: "Fontsource",
+          url: "https://fontsource.org/",
+          license: "MIT License",
+        },
       ],
     };
   },
