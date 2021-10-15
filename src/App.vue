@@ -4,6 +4,8 @@
 </template>
 
 <script>
+import "@fontsource/montserrat/400.css"
+import "@fontsource/montserrat/700.css"
 import Footer from "./components/Footer.vue";
 import { StartListeningForDarkMode } from "./scripts/darkMode.js";
 export default {
@@ -18,14 +20,10 @@ export default {
 
 <style lang="scss">
 @import "@/styles/base.scss";
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 body {
   margin: 0;
   padding: 0 10%;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
 }
 
 .app__router-view {

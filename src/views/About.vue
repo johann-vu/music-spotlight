@@ -60,6 +60,16 @@ export default {
           url: "https://kazupon.github.io/vue-i18n",
           license: "MIT License",
         },
+        {
+          title: "Montserrat",
+          url: "https://github.com/JulietaUla/Montserrat",
+          license: "Open Font License",
+        },
+        {
+          title: "Fontsource",
+          url: "https://fontsource.org/",
+          license: "MIT License",
+        },
       ],
     };
   },

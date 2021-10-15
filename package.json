@@ -9,6 +9,7 @@
     "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\""
   },
   "dependencies": {
+    "@fontsource/montserrat": "^4.5.1",
     "core-js": "^3.6.5",
     "node-vibrant": "^3.2.1-alpha.1",
     "sass": "^1.37.5",
