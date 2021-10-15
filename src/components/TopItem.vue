@@ -5,10 +5,10 @@
         <img class="top-item__image" :src="internalItem.imageURL" />
       </div>
       <div class="top-item__infos">
-        <p class="top-item__title">{{ internalItem.title }}</p>
-        <span class="top-item__sub-title">{{
-          internalItem.subtitle ? internalItem.subtitle : "-"
-        }}</span>
+        <span class="top-item__title">{{ internalItem.title }}</span>
+        <span class="top-item__sub-title">
+          {{ internalItem.subtitle ? internalItem.subtitle : "-" }}
+        </span>
       </div>
     </div>
     <div
@@ -169,19 +169,21 @@ $min-item-height: 80px;
   }
 
   .top-item__infos {
-    white-space: nowrap;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
-    text-overflow: ellipsis;
+
+    span {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      margin: 3px 0;
+      width: 100%;
+    }
 
     .top-item__title {
       font-weight: bold;
-      font-size: 24pt;
-      margin: 0;
-    }
-
-    .top-item__sub-title {
-      margin: 0;
+      font-size: 20pt;
     }
   }
 
