@@ -1,5 +1,6 @@
 {
   "about_data_paragraph": "This application does not save any of your data to a server. Everything is processed on your own device.",
+  "about_google_fonts_paragraph": "Fonts are pulled from Google Fonts. In the process, Google collects data about the use of fonts. ",
   "about_permissions_paragraph": "If you want to revoke the permissions, go to accounts.spotify.com and remove \"Music Spotlight\" from the list of apps.",
   "about_title": "About \"Your Music Spotlight\"",
   "acknowledgements_headline": "Acknowledgements",

@@ -6,6 +6,7 @@
       <h2>{{ $t("privacy_headline") }}</h2>
       <p>{{ $t("about_data_paragraph") }}</p>
       <p>{{ $t("about_permissions_paragraph") }}</p>
+      <p>{{ $t("about_google_fonts_paragraph") }}</p>
     </div>
     <div class="about-view__segement">
       <h2>{{ $t("acknowledgements_headline") }}</h2>
@@ -59,6 +60,11 @@ export default {
           title: "Vue I18n",
           url: "https://kazupon.github.io/vue-i18n",
           license: "MIT License",
+        },
+        {
+          title: "Montserrat",
+          url: "https://fonts.google.com/specimen/Montserrat",
+          license: "Open Font License",
         },
       ],
     };
