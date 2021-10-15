@@ -6,7 +6,6 @@
       <h2>{{ $t("privacy_headline") }}</h2>
       <p>{{ $t("about_data_paragraph") }}</p>
       <p>{{ $t("about_permissions_paragraph") }}</p>
-      <p>{{ $t("about_google_fonts_paragraph") }}</p>
     </div>
     <div class="about-view__segement">
       <h2>{{ $t("acknowledgements_headline") }}</h2>
@@ -63,7 +62,7 @@ export default {
         },
         {
           title: "Montserrat",
-          url: "https://fonts.google.com/specimen/Montserrat",
+          url: "https://github.com/JulietaUla/Montserrat",
           license: "Open Font License",
         },
       ],
