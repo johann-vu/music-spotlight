@@ -15,5 +15,8 @@
   "short_term": "Kurzfristig",
   "tracks": "Titel",
   "version_info": "Version {version} Build {hash}",
-  "welcome_back": "Willkommen zurück, {name}!"
+  "welcome_back": "Willkommen zurück, {name}!",
+  "error_title": "Oh je ...",
+  "error_description": "Offenbar ist ein Fehler aufgetreten. Bitte versuche es erneut. Sollte der Fehler wiederholt auftreten, melde ihn bitte im GitHub Repository.",
+  "error_link": "Zum Start"
 }

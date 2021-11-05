@@ -3,6 +3,7 @@ import Home from "../views/Home.vue";
 import { EvaluateCallback } from "../scripts/spotify";
 import Top from "../views/Top.vue";
 import About from "../views/About.vue";
+import ErrorView from "../views/Error.vue";
 
 const routes = [
   {
@@ -28,6 +29,11 @@ const routes = [
     path: "/about",
     name: "About",
     component: About,
+  },
+  {
+    path: "/error",
+    name: "Error",
+    component: ErrorView,
   },
 ];
 
