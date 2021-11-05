@@ -39,7 +39,9 @@ export default {
             : ConvertTracks(results.items);
         })
         .then((items) => (this.topItems = items))
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          this.$router.push("/error?error=" + err)
+        });
     },
     handleCategoryChange(selection) {
       this.category = selection;

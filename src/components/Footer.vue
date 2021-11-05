@@ -4,30 +4,26 @@
       class="footer__icon-wrapper"
       to="/about"
     >
-      <img class="footer__icon --dark" src="@/assets/info-icon-light.svg" />
-      <img class="footer__icon --light" src="@/assets/info-icon-dark.svg" />
+      <Icon name="info-icon" class="footer__icon"/>
     </router-link>
     <a
       class="footer__icon-wrapper"
       href="https://github.com/johann-vu/music-spotlight"
     >
-      <img class="footer__icon --dark" src="@/assets/github-icon-light.svg" />
-      <img class="footer__icon --light" src="@/assets/github-icon-dark.svg" />
+      <Icon name="github-icon" class="footer__icon"/>
     </a>
     <div
       class="footer__icon-wrapper"
       @click="toggleDarkMode"
     >
-      <img class="footer__icon --light" src="@/assets/night-icon.svg" />
-      <img class="footer__icon --dark" src="@/assets/sun-icon.svg" />
+      <Icon name="dark-mode-icon" class="footer__icon"/>
     </div>
     <div
       v-if="canLogout"
       class="footer__icon-wrapper"
       @click="logout"
     >
-      <img class="footer__icon --dark" src="@/assets/logout-icon-light.svg" />
-      <img class="footer__icon --light" src="@/assets/logout-icon-dark.svg" />
+      <Icon name="logout-icon" class="footer__icon"/>
     </div>
   </div>
   
@@ -36,12 +32,16 @@
 <script>
 import { ToggleDarkMode } from "../scripts/darkMode.js";
 import { RemoveToken, HasValidToken } from "../scripts/spotify.js";
+import Icon from './util/Icon.vue'
 export default {
   name: "Footer",
   data() {
     return {
       canLogout: false
     };
+  },
+  components: {
+    Icon
   },
   mounted() {
     this.canLogout = HasValidToken()
