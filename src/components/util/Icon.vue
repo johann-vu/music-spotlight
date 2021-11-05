@@ -10,10 +10,10 @@ export default {
   name: "Icon",
   computed: {
     lightIconPath() {
-      return `/assets/${this.name}-light.svg`;
+      return `${process.env.VUE_APP_BASE_PATH}assets/${this.name}-light.svg`;
     },
     darkIconPath() {
-      return `/assets/${this.name}-dark.svg`;
+      return `${process.env.VUE_APP_BASE_PATH}assets/${this.name}-dark.svg`;
     },
   },
   props: {
