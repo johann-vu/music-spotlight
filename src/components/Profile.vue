@@ -37,7 +37,10 @@ export default {
         (profile) => {
           this.profile = profile;
         }
-      );
+      )
+      .catch((err) => {
+        this.$router.push("/error?error=" + err)
+        });
     },
   },
   mounted() {

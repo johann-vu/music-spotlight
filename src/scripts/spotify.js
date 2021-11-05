@@ -56,7 +56,7 @@ export async function MakeSpotifyGETRequest(uri) {
   const response = await fetch(myRequest);
 
   if (!response.ok) {
-    return;
+    throw "spotify_get_response_not_ok";
   }
 
   return await response.json();
