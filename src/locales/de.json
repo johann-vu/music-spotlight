@@ -18,5 +18,6 @@
   "welcome_back": "Willkommen zurück, {name}!",
   "error_title": "Oh je ...",
   "error_description": "Offenbar ist ein Fehler aufgetreten. Bitte versuche es erneut. Sollte der Fehler wiederholt auftreten, melde ihn bitte im GitHub Repository.",
-  "error_link": "Zum Start"
+  "error_link": "Zum Start",
+  "error_details-headline": "Fehlerdetails"
 }
